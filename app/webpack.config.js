@@ -43,7 +43,10 @@ module.exports = {
               ]
             ],
             plugins: [
-              "react-hot-loader/babel"
+              "react-hot-loader/babel",
+              "transform-decorators-legacy",
+              "transform-class-properties",
+              "transform-es2015-destructuring"
             ]
           }
         }

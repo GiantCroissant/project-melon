@@ -7,14 +7,21 @@ import { AppContainer } from 'react-hot-loader';
 import AppwideManagement from './containers/AppwideManagement';
 
 //
+import Overview from './stores/Overview';
+
+//
 const container = document.createElement('container');
 container.id = 'container';
 document.body.appendChild(container);
 
+const overview = new Overview();
+
 const render = Component => {
   ReactDOM.render(
     <AppContainer>
-      <Component />
+      <Component
+        overview={overview}
+      />
     </AppContainer>,
     container
   );
