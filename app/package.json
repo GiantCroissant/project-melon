@@ -1,0 +1,26 @@
+{
+  "name": "project-melon",
+  "version": "0.1.0",
+  "description": "A web-app-like blog",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack -p --config ./webpack.config.js"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "16.0.0-alpha.12",
+    "react-dom": "16.0.0-alpha.12"
+  },
+  "devDependencies": {
+    "babel-core": "7.0.0-alpha.12",
+    "babel-loader": "7.0.0",
+    "babel-preset-env": "2.0.0-alpha.12",
+    "babel-preset-react": "7.0.0-alpha.12",
+    "html-webpack-plugin": "^2.28.0",
+    "webpack": "3.0.0-rc.1"
+  }
+}
