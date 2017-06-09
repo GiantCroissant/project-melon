@@ -15,6 +15,8 @@ module.exports = {
 
   entry: {
     'app': [
+      'react-hot-loader/patch',
+      'webpack-hot-middleware/client?quiet=true',
       './src/index'
     ]
   },
@@ -39,6 +41,9 @@ module.exports = {
               [
                 "react"
               ]
+            ],
+            plugins: [
+              "react-hot-loader/babel"
             ]
           }
         }
@@ -47,6 +52,10 @@ module.exports = {
   },
 
   plugins: [
+
+    // new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
 
     new HtmlWebpackPlugin({
       template: path.join(templateSourcePath, 'index.ejs'),
