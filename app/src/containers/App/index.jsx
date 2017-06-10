@@ -3,27 +3,33 @@ import { render } from 'react-dom';
 
 import { Provider, inject, observer } from 'mobx-react';
 
+import { BrowserRouter, Route, Redirect, Switch, Link, withRouter } from 'react-router-dom';
+
+import routeConfig from 'routes';
+import RouteWithSubRoutes from 'containers/RouteWithSubRoutes';
+
+import Header from '../Header';
+
 const _ = inject(
   'overview'
 )(observer((props) => {
-  const { overview } = props;
-
-  const renderOverviews = (overviews) => {
-    return overviews.map((o, i) => {
-      return (
-        <ul key={o.id}>
-          <li>{o.title}</li>
-          <li>{o.subTitle}</li>
-        </ul>
-      );
-    });
-  };
-
+  console.log(props);
   return (
-    <div>
-      <h1>Overview</h1>
-      {renderOverviews(overview.overviews)}
-    </div>
+    <BrowserRouter>
+      <div>
+        <Header />
+
+        <Route exact path="/" render={props => (
+          <Redirect to="/overviews" />
+        )} />
+
+        {
+          routeConfig.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))
+        }
+      </div>
+    </BrowserRouter>
   );
 }));
 

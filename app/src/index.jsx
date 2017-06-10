@@ -7,7 +7,8 @@ import { AppContainer } from 'react-hot-loader';
 import AppwideManagement from './containers/AppwideManagement';
 
 //
-import Overview from './stores/Overview';
+import Detail from 'stores/Detail';
+import Overview from 'stores/Overview';
 
 //
 const container = document.createElement('container');
@@ -15,12 +16,14 @@ container.id = 'container';
 document.body.appendChild(container);
 
 const overview = new Overview();
+const detail = new Detail();
 
 const render = Component => {
   ReactDOM.render(
     <AppContainer>
       <Component
         overview={overview}
+        detail={detail}
       />
     </AppContainer>,
     container

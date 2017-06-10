@@ -46,7 +46,13 @@ module.exports = {
               "react-hot-loader/babel",
               "transform-decorators-legacy",
               "transform-class-properties",
-              "transform-es2015-destructuring"
+              "transform-es2015-destructuring",
+
+              [
+                "module-resolver", {
+                  "root": ["./src"]
+                }
+              ]
             ]
           }
         }

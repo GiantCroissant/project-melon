@@ -11,6 +11,7 @@ export default class extends React.Component {
     return (
       <Provider
         overview={this.props.overview}
+        detail={this.props.detail}
       >
         <App />
       </Provider>
