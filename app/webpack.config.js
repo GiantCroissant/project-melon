@@ -61,6 +61,7 @@ module.exports = {
       },
       {
         test: /\.json$/,
+        exclude: /(node_modules|bower_components|templates)/,
         use: 'json-loader'
       },
       {
@@ -85,7 +86,7 @@ module.exports = {
 
     // new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
 
     new HtmlWebpackPlugin({
       template: path.join(templateSourcePath, 'index.ejs'),
@@ -95,6 +96,6 @@ module.exports = {
   ],
 
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.json']
   }
 };

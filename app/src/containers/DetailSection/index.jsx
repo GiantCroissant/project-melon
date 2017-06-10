@@ -7,7 +7,9 @@ import { inject, observer } from 'mobx-react';
 import pathToRegexp from 'path-to-regexp';
 
 //
-import { Header, Icon, Image } from 'semantic-ui-react';
+import { Header, Icon, Image, Item } from 'semantic-ui-react';
+
+import Block from 'containers/Block';
 
 const _ = inject(
   'detail'
@@ -19,6 +21,18 @@ const _ = inject(
 
   props.detail.specificArticle(articleId);
 
+  const showContentBlocks = (contentBlocks) => {
+    return contentBlocks.map((contentBlock) =>
+      <Item
+        key={contentBlock.id}
+      >
+        <Block
+          contentBlock={contentBlock}
+        />
+      </Item>
+    );
+  };
+
   return (
     <div>
       <Header as="h1">
@@ -29,6 +43,9 @@ const _ = inject(
           {props.detail.currentArticle.subTitle}
         </Header.Subheader>
       </Header>
+      <Item.Group>
+        {showContentBlocks(props.detail.currentArticle.contentBlocks)}
+      </Item.Group>
     </div>
   );
 }));
