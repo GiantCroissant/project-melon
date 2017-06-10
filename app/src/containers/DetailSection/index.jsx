@@ -3,25 +3,33 @@ import { render } from 'react-dom';
 
 import { inject, observer } from 'mobx-react';
 
+//
+import pathToRegexp from 'path-to-regexp';
+
+//
+import { Header, Icon, Image } from 'semantic-ui-react';
+
 const _ = inject(
   'detail'
 )(observer((props) => {
-  const showDetails = (articles) => {
-    return articles.map((a, i) =>
-      <div key={a.id}>
-        <h1>{a.title}</h1>
-        <h3>{a.subTitle}</h3>
-        <h6>{a.modifiedAt}</h6>
-      </div>
-    );
-  }
+  let keys = []
+  let re = pathToRegexp(props.match.path, keys);
+  let parsedParts = re.exec(props.match.url);
+  let articleId = parsedParts[1];
+
+  props.detail.specificArticle(articleId);
 
   return (
-    <section>
-      <main>
-        {showDetails(props.detail.articles)}
-      </main>
-    </section>
+    <div>
+      <Header as="h1">
+        <Header.Content>
+          {props.detail.currentArticle.title}
+        </Header.Content>
+        <Header.Subheader>
+          {props.detail.currentArticle.subTitle}
+        </Header.Subheader>
+      </Header>
+    </div>
   );
 }));
 

@@ -10,6 +10,9 @@ export default class {
   @observable
   articles = [];
 
+  @observable
+  currentArticle = {};
+
   constructor() {
     this.setArticles(data.articles);
   }
@@ -21,5 +24,14 @@ export default class {
 
   @action
   addArticle(article) {
+  }
+
+  @action
+  specificArticle(articleId) {
+    let foundArticle = this.articles.find((a) => a.id == articleId);
+    if (foundArticle !== undefined && foundArticle !== null)
+    {
+      this.currentArticle = foundArticle;
+    }
   }
 }
