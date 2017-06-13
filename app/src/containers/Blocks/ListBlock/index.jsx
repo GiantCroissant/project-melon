@@ -13,14 +13,14 @@ const _ = inject(
   const showListItemSub = ((sub) => {
     return (
       <List.List>
-        {sub.map((item, i) => showListItem(item))}
+        {sub.map((item, i) => showListItem(item, i))}
       </List.List>
     );
   });
 
-  const showListItem = ((item) => {
+  const showListItem = ((item, index) => {
     return (
-      <List.Item>
+      <List.Item key={index}>
         <List.Icon name={item.icon} />
         <List.Content>
           <List.Header>{item.name}</List.Header>
@@ -33,7 +33,7 @@ const _ = inject(
 
   return (
     <List>
-      {data.map((item, i) => showListItem(item))}
+      {data.map((item, i) => showListItem(item, i))}
     </List>
   );
 
