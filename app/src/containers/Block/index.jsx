@@ -11,7 +11,7 @@ import ImageBlock from 'containers/Blocks/ImageBlock';
 import VideoBlock from 'containers/Blocks/VideoBlock';
 
 const _ = inject(
-  'overview'
+  'detail'
 )(observer((props) => {
   const { kind, subKind, data } = props.contentBlock.content;
 

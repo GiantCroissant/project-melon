@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { inject, observer } from 'mobx-react';
 
 const _ = inject(
-  'overview'
+  'detail'
 )(observer((props) => {
   return (
     <section>

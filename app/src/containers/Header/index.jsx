@@ -8,10 +8,8 @@ import { Link } from 'react-router-dom';
 import { Menu, Segment } from 'semantic-ui-react';
 
 const _ = inject(
-  'overview'
+  'detail'
 )(observer((props) => {
-  const handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-
   return (
     <div>
       <Menu pointing secondary>
@@ -20,7 +18,6 @@ const _ = inject(
           <Menu.Item name='logout'><Link to="/about">About</Link></Menu.Item>
         </Menu.Menu>
       </Menu>
-
     </div>
   );
 }));

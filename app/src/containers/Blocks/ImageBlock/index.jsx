@@ -6,7 +6,7 @@ import { inject, observer } from 'mobx-react';
 import { Image } from 'semantic-ui-react';
 
 const _ = inject(
-  'overview'
+  'detail'
 )(observer((props) => {
   const { data } = props;
   return (

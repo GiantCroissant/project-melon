@@ -11,7 +11,7 @@ import RouteWithSubRoutes from 'containers/RouteWithSubRoutes';
 import Header from '../Header';
 
 const _ = inject(
-  'overview'
+  'detail'
 )(observer((props) => {
   console.log(props);
   return (

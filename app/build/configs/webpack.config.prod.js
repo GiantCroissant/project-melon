@@ -11,6 +11,7 @@ module.exports = merge(baseConfig, {
   entry: {
     'app': [
       'babel-polyfill',
+      'whatwg-fetch',
       './src/index'
     ]
   },

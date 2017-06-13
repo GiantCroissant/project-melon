@@ -9,8 +9,10 @@ import { Link } from 'react-router-dom';
 import { Image, Item } from 'semantic-ui-react';
 
 const _ = inject(
-  'overview'
+  'detail'
 )(observer((props) => {
+  // const { detail } = props.detail
+
   const showOverviews = (overviews) => {
     return overviews.map((o, i) =>
       <Item key={o.id}>
@@ -30,7 +32,7 @@ const _ = inject(
     <section>
       <main>
         <Item.Group>
-          {showOverviews(props.overview.overviews)}
+          {showOverviews(props.detail.articles)}
         </Item.Group>
       </main>
     </section>
