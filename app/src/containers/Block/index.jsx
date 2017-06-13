@@ -6,8 +6,9 @@ import { inject, observer } from 'mobx-react';
 //
 import { Segment, Button, Divider, Message } from 'semantic-ui-react';
 
-import MarkdownBlock from 'containers/Blocks/MarkdownBlock';
 import ImageBlock from 'containers/Blocks/ImageBlock';
+import ListBlock from 'containers/Blocks/ListBlock';
+import MarkdownBlock from 'containers/Blocks/MarkdownBlock';
 import VideoBlock from 'containers/Blocks/VideoBlock';
 
 const _ = inject(
@@ -38,6 +39,10 @@ const _ = inject(
     } else if (kind === 'image') {
       result = (
         <ImageBlock data={data} />
+      )
+    } else if (kind === 'list') {
+      result = (
+        <ListBlock data={data} />
       )
     }
 
