@@ -12,7 +12,7 @@ const _ = inject(
   return (
     <Embed
       id={data}
-      source='youtube'
+      source="youtube"
     />
   );
 }));

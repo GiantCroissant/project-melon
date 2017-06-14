@@ -10,6 +10,7 @@ export default class extends React.Component {
   render () {
     return (
       <Provider
+        author={this.props.author}
         detail={this.props.detail}
       >
         <App />

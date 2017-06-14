@@ -17,6 +17,7 @@ import { Divider, Grid, Header, Icon, Image, Item, Label, List, Segment } from '
 import Block from 'containers/Block';
 
 const _ = inject(
+  'author',
   'detail'
 )(observer((props) => {
   let keys = []
@@ -59,6 +60,25 @@ const _ = inject(
     return result;
   };
 
+  const showAuthor = (authorId, inSize) => {
+    props.author.specificAuthor(authorId);
+
+    console.log(`inSize: ${inSize}`);
+    return (
+      <Item>
+        <Item.Image size={inSize} src={props.author.currentAuthor.imageUrl} />
+        <Item.Content>
+          <Item.Header>
+            {props.author.currentAuthor.name}
+          </Item.Header>
+          <Item.Description>
+            {props.author.currentAuthor.description}
+          </Item.Description>
+        </Item.Content>
+      </Item>
+    );
+  };
+
   const showTags = (overview) => {
     let result = (<div></div>);
     if (overview.tags.length > 0) {
@@ -76,7 +96,7 @@ const _ = inject(
     return result;
   };
 
-  const showMain = () => {
+  const showMain = (inSize) => {
     return (
       <div>
         <Header textAlign="center" size="huge">
@@ -106,6 +126,10 @@ const _ = inject(
         <Item.Group>
           {showContentBlocks(props.detail.currentArticle.contentBlocks)}
         </Item.Group>
+        <Divider horizontal>Author</Divider>
+        <Item.Group>
+          {showAuthor(props.detail.currentArticle.author, inSize)}
+        </Item.Group>
       </div>
     );
   };
@@ -114,17 +138,17 @@ const _ = inject(
     <div>
       <Desktop>
         <div style={{ width: '60%', margin: '10px auto' }}>
-          {showMain()}
+          {showMain('tiny')}
         </div>
       </Desktop>
       <Tablet>
         <div style={{ width: '75%', margin: '10px auto' }}>
-          {showMain()}
+          {showMain('tiny')}
         </div>
       </Tablet>
       <Mobile>
         <div style={{ width: '90%', margin: '10px auto' }}>
-          {showMain()}
+          {showMain('mini')}
         </div>
       </Mobile>
     </div>

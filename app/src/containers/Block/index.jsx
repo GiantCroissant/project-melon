@@ -15,7 +15,7 @@ import VideoBlock from 'containers/Blocks/VideoBlock';
 const _ = inject(
   'detail'
 )(observer((props) => {
-  const { kind, subKind, collapsed, data } = props.contentBlock.content;
+  const { kind, subKind, collapsed, canCollapse, data } = props.contentBlock.content;
 
   console.log(`collapsed: ${collapsed}`);
 
@@ -76,14 +76,21 @@ const _ = inject(
     )
   }];
 
-  const checkThenPresent = (collapsed) => {
-    if (collapsed) return (<Accordion panels={panels} />);
-    else return (<div>{presentContent(kind, subKind, data)}</div>);
+  const checkThenPresent = (canCollapse, collapsed) => {
+    if (canCollapse) {
+      if (collapsed) {
+        return (<Accordion fluid panels={panels} />);
+      } else {
+        return (<Accordion fluid panels={panels} activeIndex={0} />);
+      }
+    } else {
+      return (<div>{presentContent(kind, subKind, data)}</div>);
+    }
   };
 
   return (
     <div>
-      {checkThenPresent(collapsed)}
+      {checkThenPresent(canCollapse, collapsed)}
     </div>
   );
 }));

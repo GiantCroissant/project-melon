@@ -11,6 +11,7 @@ const _ = inject(
   const { data } = props;
   return (
     <Image
+      fluid
       src={data}
     />
   );
