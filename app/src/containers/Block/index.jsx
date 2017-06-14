@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { inject, observer } from 'mobx-react';
 
 //
-import { Segment, Button, Divider, Message } from 'semantic-ui-react';
+import { Accordion, Segment, Button, Divider, Label, Message } from 'semantic-ui-react';
 
 import ImageBlock from 'containers/Blocks/ImageBlock';
 import CodeBlock from 'containers/Blocks/CodeBlock';
@@ -15,7 +15,9 @@ import VideoBlock from 'containers/Blocks/VideoBlock';
 const _ = inject(
   'detail'
 )(observer((props) => {
-  const { kind, subKind, data } = props.contentBlock.content;
+  const { kind, subKind, collapsed, data } = props.contentBlock.content;
+
+  console.log(`collapsed: ${collapsed}`);
 
   const presentContent = (kind, subKind, data) => {
     let result = (
@@ -54,9 +56,34 @@ const _ = inject(
     return result;
   }
 
+  // const panels = _.times(1, i => ({
+  //   key: `panel-${i}`,
+  //   title: kind,
+  //   content: (
+  //     <div>
+  //       {presentContent(kind, subKind, data)}
+  //     </div>
+  //   ),
+  // }));
+
+  const panels = [{
+    key: `panel-1`,
+    title: kind,
+    content: (
+      <div>
+        {presentContent(kind, subKind, data)}
+      </div>
+    )
+  }];
+
+  const checkThenPresent = (collapsed) => {
+    if (collapsed) return (<Accordion panels={panels} />);
+    else return (<div>{presentContent(kind, subKind, data)}</div>);
+  };
+
   return (
     <div>
-      {presentContent(kind, subKind, data)}
+      {checkThenPresent(collapsed)}
     </div>
   );
 }));
