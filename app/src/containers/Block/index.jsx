@@ -10,6 +10,7 @@ import ImageBlock from 'containers/Blocks/ImageBlock';
 import CodeBlock from 'containers/Blocks/CodeBlock';
 import ListBlock from 'containers/Blocks/ListBlock';
 import MarkdownBlock from 'containers/Blocks/MarkdownBlock';
+import UnityAssetStoreBlock from 'containers/Blocks/UnityAssetStoreBlock';
 import VideoBlock from 'containers/Blocks/VideoBlock';
 
 const _ = inject(
@@ -37,20 +38,24 @@ const _ = inject(
       if (subKind === 'youtube') {
         result = (
           <VideoBlock data={data} />
-        )
+        );
       }
     } else if (kind === 'image') {
       result = (
         <ImageBlock data={data} />
-      )
+      );
     } else if (kind === 'list') {
       result = (
         <ListBlock data={data} />
-      )
+      );
     } else if (kind === 'code') {
       result = (
         <CodeBlock data={data} />
-      )
+      );
+    } else if (kind === 'unity-asset-store') {
+      result = (
+        <UnityAssetStoreBlock data={data} />
+      );
     }
 
     return result;
